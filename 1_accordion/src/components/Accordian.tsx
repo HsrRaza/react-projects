@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
 
 type AccordianProps = {
     id: number;
@@ -33,7 +34,7 @@ const Accordian = () => {
 
 
     return (
-        <div className="w-200 h-auto p-4 ">
+        <div className="w-200 h-100  p-4 ">
 
             {
                 data.map(({ title, description }) => (
@@ -56,15 +57,19 @@ const Accord = ({ title, content }: AccordProps) => {
     const [isActive, setActive] = useState(false)
 
     return <>
-        <div className="border border-zinc-400 mb-4 p-4  rounded-xl" 
-        onClick={() => setActive(!isActive)}>
+        <div className="border border-zinc-400 mb-4 p-4  rounded-xl"
+            onClick={() => setActive(!isActive)}>
+
+            <div className="flex justify-between items-center">
 
                 <h2 className="text-xl hover:underline cursor-pointer ">{title} </h2>
+                <h2>{isActive ? <FaChevronDown /> : <FaChevronUp />} </h2>
+            </div>
 
-            
-            <div className={` mt-4 transition-all duration-300 ease-in ${isActive ? "opacity-100 max-h-40": "opacity-0 max-h-0"} overflow-hidden`}>
 
-                <p className= "text-md text-zinc-300">{content}</p>
+            <div className={` mt-4 transition-all duration-300 ease-in ${isActive ? "opacity-100 max-h-40" : "opacity-0 max-h-0"} overflow-hidden`}>
+
+                <p className="text-md text-zinc-300">{content}</p>
 
 
             </div>
