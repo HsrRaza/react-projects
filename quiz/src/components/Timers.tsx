@@ -5,7 +5,8 @@ import { useEffect, useState } from "react"
 
 function Timers() {
 
-    // const [leftTime, setLeftTime] = useState(80)
+    const [leftTime, setLeftTime] = useState(5)
+    const [displayTime, setDisplayTime]= useState('')
 
     useEffect(() => {
         let intervalId = setInterval(() => {
@@ -25,7 +26,8 @@ function Timers() {
     }, [])
 
     useEffect( ()=>{
-        console.log(`${(Math.floor(leftTime/60)).toString().padStart(2,"0") }:${(leftTime%60).toString().padStart(2,"0")} `);
+        let formated=`${(Math.floor(leftTime/60)).toString().padStart(2,"0") }:${(leftTime%60).toString().padStart(2,"0")} `
+        setDisplayTime(formated)
         
 
     },[leftTime])
@@ -33,7 +35,7 @@ function Timers() {
 
     return (
         <div className="text-4xl">
-            Time left:  {leftTime}
+            Time left:  {displayTime}
 
         </div>
     )
