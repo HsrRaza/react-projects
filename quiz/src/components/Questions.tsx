@@ -3,7 +3,7 @@ import { useState } from "react";
 import questions from "./Question.json"
 
 
-const Questions = ({setOver}) => {
+const Questions = ({setOver}:{setOver: (Over:boolean)=>void}) => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [score, setScore] = useState(0)

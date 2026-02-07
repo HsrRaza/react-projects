@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 
-function Timers() {
+function Timers({setOver}: {setOver: (over: boolean) => void}) {
 
     const [leftTime, setLeftTime] = useState(5)
     const [displayTime, setDisplayTime]= useState('')
@@ -13,6 +13,7 @@ function Timers() {
             setLeftTime((prev) => {
                 if (prev <= 0) {
                     clearInterval(intervalId);
+                    
                     return 0
                 }
                 return prev - 1
@@ -26,6 +27,9 @@ function Timers() {
     }, [])
 
     useEffect( ()=>{
+        if(leftTime === 0){
+            setOver(true)
+        }
         let formated=`${(Math.floor(leftTime/60)).toString().padStart(2,"0") }:${(leftTime%60).toString().padStart(2,"0")} `
         setDisplayTime(formated)
         
